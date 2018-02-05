@@ -1,0 +1,14 @@
+<h1>Create an Assignment</h1>
+
+<form action="{% url 'due:create_assignment' %}" method="post">
+{% csrf_token %}
+    <label for="name">Assignment Name: </label>
+    <input type="text" name="name" id="name"/>
+    <label for="due_date">Due Date: </label>
+    <input type="datetime-local" id="due_date"/>
+    <input type="submit" value="Save"/>
+</form>
+
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
