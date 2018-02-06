@@ -1,6 +1,5 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
-from django.urls import reverse
+from django.shortcuts import render, redirect
+from django.utils import timezone
 
 from .models import Assignment
 
@@ -12,14 +11,12 @@ def index(request):
 
 
 def create_assignment(request):
-    try:
+    if (request.POST):
         assignment = Assignment()
         assignment.name = request.POST['name']
         assignment.due_date = request.POST['due_date']
-    except (KeyError, Assignment.DoesNotExist):
-        return render(request, 'due/create_assignment.html', {
-            'error_message': "Please fill in all fields.",
-        })
-    else:
+        assignment.create_date = timezone.now()
         assignment.save()
-        return HttpResponseRedirect(reverse('due'))
+        return redirect('due:index')
+    else:
+        return render(request, 'due/create_assignment.html')
