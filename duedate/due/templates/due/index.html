@@ -1,7 +1,7 @@
 {% if upcoming_assignments %}
 	<ul>
 	{% for assignment in upcoming_assignments %}
-		<li>{{ assignment.name }} - Due: {{ assignment.due_date }}</li>
+		<li><a href="{% url 'due:detail' assignment.id %}">{{ assignment.name }} - Due: {{ assignment.due_date }}</a></li>
 	{% endfor %}
 {% else %}
 	<p>No assignments due, take a break!</p>
