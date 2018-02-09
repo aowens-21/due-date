@@ -1,3 +1,7 @@
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+
 <h1>Create an Assignment</h1>
 
 <form action="#" method="post">
@@ -5,6 +9,8 @@
     <label for="name">Assignment Name: </label>
     <input type="text" name="name" id="name"/>
     <label for="due_date">Due Date: </label>
-    <input type="datetime-local" id="due_date" name="due_date"/>
+    <input type="date" id="due_date" name="due_date"/>
+    <label for="due_time">Due Time: </label>
+    <input type="time" id="due_time" name="due_time"/>
     <input type="submit" value="Save"/>
 </form>

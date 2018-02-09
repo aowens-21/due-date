@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
+from datetime import datetime
 
 from .models import Assignment
 
@@ -18,7 +19,8 @@ def create_assignment(request):
     if (request.POST):
         assignment = Assignment()
         assignment.name = request.POST['name']
-        assignment.due_date = request.POST['due_date']
+        datetime_string = request.POST['due_date'] + ' ' + request.POST['due_time']
+        assignment.due_date = datetime.strptime(datetime_string, '%Y-%m-%d %H:%M')
         assignment.create_date = timezone.now()
         assignment.save()
         return redirect('due:index')
@@ -30,8 +32,7 @@ def assignment_detail(request, assignment_id):
     """ Handler for the assignment detail page which displays info
     about a specific assignment and allows user to complete assignment."""
     assignment = get_object_or_404(Assignment, pk=assignment_id)
-    return render(request, 'due/assignment_detail.html',
-                  {'assignment': assignment})
+    return render(request, 'due/assignment_detail.html', {'assignment': assignment})
 
 
 def complete(request, assignment_id):
