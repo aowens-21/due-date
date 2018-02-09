@@ -1,9 +1,13 @@
+<head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+</head>
 {% if assignment %}
     <h4>Name: {{ assignment.name }}</h4>
     <h4>Due: {{ assignment.due_date }}</h4>
     <form action="{% url 'due:complete' assignment.id %}" method="post">
     {% csrf_token %}
-        <input type="submit" value="Complete Assignment"/>
+        <input class="btn btn-primary" type="submit" value="Complete Assignment"/>
     </form>
     <a href="{% url 'due:index' %}">Cancel</a>
 {% endif %}
