@@ -1,5 +1,6 @@
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 </head>
 
 <h1>Create an Assignment</h1>
@@ -12,5 +13,6 @@
     <input type="date" id="due_date" name="due_date"/>
     <label for="due_time">Due Time: </label>
     <input type="time" id="due_time" name="due_time"/>
-    <input type="submit" value="Save"/>
+    <input class="btn btn-primary" type="submit" value="Save"/>
+    <a class="btn btn-danger" href="{% url 'due:index' %}">Cancel</a>
 </form>

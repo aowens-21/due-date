@@ -2,6 +2,8 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 </head>
+<h1>Upcoming Assignments</h1>
+<br />
 {% if upcoming_assignments %}
 	<ul>
 	{% for assignment in upcoming_assignments %}
@@ -10,4 +12,5 @@
 {% else %}
 	<p>No assignments due, take a break!</p>
 {% endif %}
+<br />
 <a class="btn btn-primary" href="{% url 'due:create_assignment' %}">Create Assignment</a>   
