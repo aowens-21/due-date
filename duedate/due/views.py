@@ -8,7 +8,7 @@ from .models import Assignment
 def index(request):
     """ Handler for our homepage which displays all the upcoming assignments sorted
     by due date. """
-    upcoming_assignments = Assignment.objects.filter(completed=False).order_by('-due_date')
+    upcoming_assignments = Assignment.objects.filter(completed=False).order_by('due_date')
     context = {'upcoming_assignments': upcoming_assignments}
     return render(request, 'due/index.html', context)
 
